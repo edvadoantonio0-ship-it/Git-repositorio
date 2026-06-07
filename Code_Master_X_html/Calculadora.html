@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora Organizada</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #0f172a;
+        }
+
+        /* Container */
+        .container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Calculadora */
+        .calculadora {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px #00ffcc;
+            width: 320px;
+        }
+
+        /* Tela */
+        #resultado {
+            width: 100%;
+            height: 60px;
+            font-size: 26px;
+            margin-bottom: 15px;
+            text-align: right;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            background: #0f172a;
+            color: #00ffcc;
+        }
+
+        /* GRID dos botões */
+        .botoes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        /* Botões */
+        button {
+            height: 60px;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            background: #334155;
+            color: white;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        button:hover {
+            background: #00ffcc;
+            color: black;
+        }
+
+        button:active {
+            transform: scale(0.9);
+        }
+
+        /* Botões especiais */
+        .igual {
+            background: #00ffcc;
+            color: black;
+        }
+
+        .limpar {
+            background: #ef4444;
+        }
+
+        .zero {
+            grid-column: span 2;
+        }
+
+        /* Histórico */
+        .historico {
+            background: #1e293b;
+            padding: 15px;
+            border-radius: 15px;
+            width: 220px;
+            max-height: 400px;
+            overflow-y: auto;
+            color: white;
+            box-shadow: 0 0 15px #00ffcc;
+        }
+
+        .item {
+            border-bottom: 1px solid #334155;
+            padding: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- CALCULADORA -->
+        <div class="calculadora">
+            <input type="text" id="resultado" readonly>
+
+            <div class="botoes">
+                <button class="limpar" onclick="limpar()">C</button>
+                <button onclick="adicionar('/')">/</button>
+                <button onclick="adicionar('*')">*</button>
+                <button onclick="apagar()">⌫</button>
+
+                <button onclick="adicionar('7')">7</button>
+                <button onclick="adicionar('8')">8</button>
+                <button onclick="adicionar('9')">9</button>
+                <button onclick="adicionar('-')">-</button>
+
+                <button onclick="adicionar('4')">4</button>
+                <button onclick="adicionar('5')">5</button>
+                <button onclick="adicionar('6')">6</button>
+                <button onclick="adicionar('+')">+</button>
+
+                <button onclick="adicionar('1')">1</button>
+                <button onclick="adicionar('2')">2</button>
+                <button onclick="adicionar('3')">3</button>
+                <button class="igual" onclick="calcular()">=</button>
+
+                <button class="zero" onclick="adicionar('0')">0</button>
+                <button onclick="adicionar('.')">.</button>
+            </div>
+        </div>
+
+        <!-- HISTÓRICO -->
+        <div class="historico">
+            <h3>Histórico</h3>
+            <div id="lista"></div>
+        </div>
+
+    </div>
+
+    <script>
+        function adicionar(v) {
+            resultado.value += v;
+        }
+
+        function limpar() {
+            resultado.value = "";
+        }
+
+        function apagar() {
+            resultado.value = resultado.value.slice(0, -1);
+        }
+
+        function calcular() {
+            try {
+                let conta = resultado.value;
+                let res = eval(conta);
+                resultado.value = res;
+                salvar(conta + " = " + res);
+            } catch {
+                resultado.value = "Erro";
+            }
+        }
+
+        // HISTÓRICO
+        function salvar(texto) {
+            let dados = JSON.parse(localStorage.getItem("hist")) || [];
+            dados.unshift(texto);
+            localStorage.setItem("hist", JSON.stringify(dados));
+            mostrar();
+        }
+
+        function mostrar() {
+            let lista = document.getElementById("lista");
+            lista.innerHTML = "";
+
+            let dados = JSON.parse(localStorage.getItem("hist")) || [];
+
+            dados.forEach(item => {
+                let div = document.createElement("div");
+                div.className = "item";
+                div.innerText = item;
+                lista.appendChild(div);
+            });
+        }
+
+        mostrar();
+    </script>
+
+
+</html>

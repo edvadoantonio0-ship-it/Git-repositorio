@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CodeMaxterX - Portfólio</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #0d1117;
+            color: white;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            text-align: center;
+        }
+
+        /* FOTO */
+        .foto {
+            margin-top: 30px;
+        }
+
+        .foto img {
+            width: 120px;
+            border-radius: 50%;
+            border: 3px solid #58a6ff;
+        }
+
+        /* ANIMAÇÃO */
+        .fade {
+            animation: fadeIn 1.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* CARDS */
+        .card {
+            background: #161b22;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+            background: #21262d;
+        }
+
+        /* BARRA DE HABILIDADES */
+        .skill {
+            text-align: left;
+            margin: 10px 0;
+        }
+
+        .bar {
+            background: #30363d;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 10px;
+            background: #58a6ff;
+        }
+
+        /* BOTÕES SOCIAIS */
+        .social a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 15px;
+            background: #161b22;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .social a:hover {
+            background: #58a6ff;
+            color: black;
+        }
+
+        img.icon {
+            width: 18px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        /* RESPONSIVO 📱 */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            .card {
+                padding: 15px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container fade">
+
+        <!-- FOTO -->
+        <div class="foto">
+            <img src="perfil.jpg" alt="Minha foto">
+        </div>
+
+        <h1>Edvaldo António 🚀</h1>
+        <p>Desenvolvedor em evolução | CodeMaxterX</p>
+
+        <!-- SOBRE -->
+        <div class="card">
+            <h2>👤 Sobre Mim</h2>
+            <p>
+                Sou apaixonado por tecnologia e programação, focado em evoluir todos os dias
+                e criar projetos incríveis para a internet.<br>Se você crescer na área de desenvolvimento web pode
+                acessar o meu link de 30 dias de estudo para se tornar um mestre da codificação!<br>
+
+            </p>
+        </div>
+
+        <!-- HABILIDADES -->
+        <div class="card">
+            <h2>📊 Habilidades</h2>
+
+            <div class="skill">HTML</div>
+            <div class="bar">
+                <div class="progress" style="width:80%"></div>
+            </div>
+
+            <div class="skill">CSS</div>
+            <div class="bar">
+                <div class="progress" style="width:60%"></div>
+            </div>
+
+            <div class="skill">JavaScript</div>
+            <div class="bar">
+                <div class="progress" style="width:50%"></div>
+            </div>
+
+            <div class="skill">Python</div>
+            <div class="bar">
+                <div class="progress" style="width:55%"></div>
+            </div>
+        </div>
+
+        <!-- PROJETOS -->
+        <div class="card">
+            <h2>💻 Projetos</h2>
+            <p>✔ Site pessoal<br>✔ Calculadora em Python<br>✔ Scripts de jogos</p>
+        </div>
+
+        <!-- REDES SOCIAIS -->
+        <div class="card social">
+            <h2>🔗 Redes Sociais</h2>
+
+            <a href="https://facebook.com" target="_blank"><img src="facebook.png" class="icon">Facebook</a>
+            <a href="https://instagram.com" target="_blank"><img src="instagram.png" class="icon">Instagram</a>
+            <a href="https://github.com/edvadoantonio0-ship-it" target="_blank"><img src="github.png"
+                    class="icon">GitHub</a>
+            <a href="https://youtube.com" target="_blank"><img src="youtube.png" class="icon">YouTube</a>
+            <a href="CodeMasterX.html">🏠Voltar para a página principal</a>
+            <a href="Lista%20de%20estudo.html"><img src="icone30dias.svg" class="icon">Plano de 30 dias de estudo</a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
