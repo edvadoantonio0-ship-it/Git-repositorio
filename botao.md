@@ -1,1 +1,1 @@
-A qui eucriar um btão para a aula de Git
+A qui eu criar um botão para a aula de Git
